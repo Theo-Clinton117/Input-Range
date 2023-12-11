@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Range Input Example</title>
+</head>
+<body>
+    <label for="rangeInput">Select a value:</label>
+    <input type="range" id="rangeInput" min="100" max="5000" step="100" value="1000" oninput="checkRangeValue()">
+    <span id="rangeValue">1000</span>
+    <p id="resultMessage"></p>
+
+    <script>
+        function checkRangeValue() {
+            // Get the range input element and the span to display the value
+            const rangeInput = document.getElementById('rangeInput');
+            const rangeValueSpan = document.getElementById('rangeValue');
+            const resultMessage = document.getElementById('resultMessage');
+
+            // Update the span with the current range value
+            const currentValue = rangeInput.value;
+            rangeValueSpan.textContent = currentValue;
+
+            // Evaluate the range value and display a message based on conditions
+            if (currentValue <= 1500) {
+                resultMessage.textContent = 'Too small';
+            } else if (currentValue > 1500 && currentValue < 2500) {
+                resultMessage.textContent = 'Intermediate';
+            } else if (currentValue === 2500) {
+                resultMessage.textContent = 'Middle';
+            } else if (currentValue > 2500 && currentValue < 5000) {
+                resultMessage.textContent = 'Big';
+            } else if (currentValue === 5000) {
+                resultMessage.textContent = 'Maximum';
+            }
+        }
+    </script>
+</body>
+</html>
